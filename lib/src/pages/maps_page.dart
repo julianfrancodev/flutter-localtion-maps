@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_04/src/bloc/scans_bloc.dart';
 import 'package:flutter_04/src/models/scan_model.dart';
+import 'package:flutter_04/src/util/utils.dart';
 
 class MapsPage extends StatelessWidget {
 
@@ -8,6 +9,9 @@ class MapsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    scansBloc.getScans();
+
     return StreamBuilder<List<ScanModel>>(
         stream: scansBloc.scansStream,
         builder: (BuildContext context, AsyncSnapshot<List<ScanModel>> snapshot){
@@ -39,6 +43,9 @@ class MapsPage extends StatelessWidget {
                   title: Text(scans[index].value) ,
                   leading: Icon(Icons.cloud_queue, color: Theme.of(context).primaryColor,),
                   trailing: Icon(Icons.arrow_forward_ios, color: Colors.grey,),
+                  onTap: (){
+                    launchURL(scans[index],context);
+                  },
                 ),
               );
             },
