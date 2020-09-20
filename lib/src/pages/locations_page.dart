@@ -24,7 +24,7 @@ class LocationsPage extends StatelessWidget {
         final scans = snapshot.data;
 
         if(scans.length == 0){
-          return Center(child: Text("we dont have data"),);
+          return Center(child: Text("No Data Here!!"),);
 
         }
 
